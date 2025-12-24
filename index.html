@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anniversaire Kiki — By Mr D</title>
+<meta name="theme-color" content="#ff5ea5">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+:root{
+  --rose-1:#ff6aa6;--rose-2:#ff9ec4;--rose-3:#ff3b8d;--vio-1:#b14cff;--txt:#fff;--muted:rgba(255,255,255,.72);
+}
+*{box-sizing:border-box}
+html,body{height:100%;scroll-behavior:smooth}
+body{
+  margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--txt);
+  background:
+    radial-gradient(1200px 800px at 10% 0%, #ff99cc22, transparent),
+    radial-gradient(1000px 700px at 90% 10%, #b14cff22, transparent),
+    radial-gradient(1000px 800px at 50% 60%, #ff7bbf22, transparent),
+    linear-gradient(180deg, #180915, #120715 60%, #100414);
+  overflow-x:hidden
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.container{width:min(1200px,92%);margin:0 auto}
+
+/* Header */
+header{
+  position:sticky;top:0;z-index:1000;background:linear-gradient(180deg,rgba(18,5,20,.85),rgba(18,5,20,.55));
+  backdrop-filter:saturate(130%) blur(14px);border-bottom:1px solid rgba(255,255,255,.08)
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--rose-1),var(--vio-1));box-shadow:0 12px 40px rgba(255,64,128,.25);transform:rotate(-12deg);position:relative}
+.brand-logo:before,.brand-logo:after{content:'';position:absolute;width:8px;height:8px;border-radius:50%;background:#fff3}
+.brand-logo:before{top:8px;left:8px}.brand-logo:after{bottom:8px;right:8px}
+.brand h1{margin:0;font-weight:800;letter-spacing:.5px;font-size:18px;background:linear-gradient(90deg,#fff,#ffd3e7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:14px}
+.nav-links a{padding:8px 12px;border-radius:999px;border:1px solid transparent;color:var(--muted);transition:.25s}
+.nav-links a:hover{color:#fff;border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.06)}
+
+/* Hero */
+.hero{position:relative;display:grid;place-items:center;padding:40px 0 28px}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+@media (max-width:900px){.hero-inner{grid-template-columns:1fr;text-align:center}}
+.kiki-title{font-size:clamp(28px,6vw,52px);line-height:1.1;margin:0 0 8px 0;font-weight:800;background:linear-gradient(90deg,#fff,#ffd1e6 60%,#ffe9f5);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 6px 30px rgba(255,64,128,.25)}
+.kiki-sub{margin:0;color:var(--muted)}
+.cta-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+@media (max-width:900px){.cta-row{justify-content:center}}
+.btn{display:inline-flex;gap:8px;align-items:center;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));color:#fff;cursor:pointer;transition:.2s;box-shadow:0 6px 16px rgba(0,0,0,.2)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(255,86,146,.25)}
+.btn.rose{background:linear-gradient(135deg,var(--rose-1),var(--rose-3));border:none}
+.btn svg{width:18px;height:18px}
+.hero-right{position:relative;display:flex;align-items:center;justify-content:center;padding:24px}
+.big-21{
+  position:absolute;inset:-10% -5% auto auto;z-index:0;font-size:min(42vw,540px);font-weight:800;line-height:.8;opacity:.08;
+  background:linear-gradient(135deg,#fff,#ffd5ea 40%,#ffc1dd);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 20px 60px rgba(255,0,128,.12));
+  user-select:none;pointer-events:none
+}
+@media (max-width:900px){.big-21{inset:auto;font-size:min(60vw,360px);top:-20px;right:50%;transform:translateX(50%)}}
+
+/* Heart */
+.heart-wrap{position:relative;display:grid;place-items:center;z-index:1}
+.heart{
+  position:relative;width:clamp(90px,16vw,160px);height:clamp(90px,16vw,160px);transform:rotate(-45deg);
+  background:linear-gradient(135deg,#ff79b0,#ff2e86);border-radius:22% 22% 0 0;box-shadow:0 18px 60px rgba(255,64,128,.35);animation:beat 1.2s ease-in-out infinite
+}
+.heart:before,.heart:after{content:'';position:absolute;width:100%;height:100%;border-radius:50%;background:inherit;box-shadow:inherit}
+.heart:before{top:-50%;left:0}.heart:after{top:0;left:50%}
+@keyframes beat{0%,100%{transform:rotate(-45deg) scale(1)}25%{transform:rotate(-45deg) scale(1.06)}50%{transform:rotate(-45deg) scale(.98)}75%{transform:rotate(-45deg) scale(1.08)}}
+
+/* Card + countdown */
+.card{position:relative;z-index:2;margin-top:18px;border-radius:16px;padding:16px 18px;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.12);box-shadow:0 12px 40px rgba(255,64,128,.22)}
+.small{font-size:12px;color:var(--muted)}
+.countdown{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-variant-numeric:tabular-nums;letter-spacing:1px}
+.countdown .unit{display:flex;flex-direction:column;align-items:center;min-width:64px}
+.countdown .num{font-size:clamp(28px,6vw,44px);font-weight:700;padding:8px 12px;border-radius:12px;background:radial-gradient(120% 120% at 20% 0%,rgba(255,255,255,.35),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 -6px 16px rgba(0,0,0,.18)}
+.countdown .label{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* Sections */
+.section{padding:44px 0}
+.section h2{font-size:clamp(22px,3.6vw,32px);margin:0 0 14px 0}
+.section p.lead{margin:0 0 16px 0;color:var(--muted)}
+
+/* Uploader */
+.upload{display:grid;gap:12px;grid-template-columns:1fr 1fr;align-items:stretch}
+@media (max-width:900px){.upload{grid-template-columns:1fr}}
+.dropzone{
+  position:relative;display:flex;align-items:center;justify-content:center;gap:12px;min-height:140px;text-align:center;
+  border:2px dashed rgba(255,255,255,.2);border-radius:16px;padding:18px;color:var(--muted);transition:.25s;background:rgba(255,255,255,.04)
+}
+.dropzone.dragover{border-color:#ffd0e8;background:rgba(255,175,210,.08)}
+.dropzone input{display:none}
+.helper{font-size:12px;color:var(--muted);margin-top:6px}
+.options{display:grid;gap:12px}
+.opt-card{padding:14px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12)}
+.opt-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+input[type="date"],input[type="time"],select{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:10px 12px;color:#fff;outline:none;font-size:14px
+}
+input[type="time"]::-webkit-calendar-picker-indicator,input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.7}
+
+/* Gallery */
+.gallery-grid{margin-top:18px;display:grid;gap:12px;grid-template-columns:repeat(4,1fr)}
+@media (max-width:1100px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:700px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:440px){.gallery-grid{grid-template-columns:1fr}}
+.media-card{position:relative;border-radius:14px;overflow:hidden;background:#1a0f16;border:1px solid rgba(255,255,255,.1);aspect-ratio:1/1;cursor:pointer;transform:translateZ(0)}
+.media-card img,.media-card video{width:100%;height:100%;object-fit:cover;display:block}
+.mc-top{position:absolute;inset:8px 8px auto 8px;display:flex;gap:6px;opacity:0;transition:opacity .2s;z-index:2}
+.media-card:hover .mc-top{opacity:1}
+.badge{backdrop-filter:blur(6px);background:rgba(255,255,255,.14);color:#fff;font-size:12px;padding:6px 8px;border-radius:999px}
+.delete-btn{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.25);color:#fff;padding:6px 8px;border-radius:10px;font-size:12px;z-index:2;opacity:.85}
+.delete-btn:hover{opacity:1}
+
+/* Modal / Diaporama */
+.modal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(12,5,14,.6);backdrop-filter:blur(8px)}
+.modal.open{display:flex}
+.modal-content{position:relative;width:min(100%,980px);height:min(80vh,720px);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#120713}
+.modal-media{position:absolute;inset:0;display:grid;place-items:center;background:#0d0610}
+.modal-media img,.modal-media video{width:100%;height:100%;object-fit:contain;background:#0d0610}
+.modal-head{position:absolute;top:8px;left:8px;right:8px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.modal-controls{position:absolute;bottom:8px;left:8px;right:8px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.ctrl,.circle-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#fff;padding:8px 12px;border-radius:12px;display:inline-flex;gap:8px;align-items:center;cursor:pointer}
+.circle-btn{width:40px;height:40px;padding:0;border-radius:100px;justify-content:center}
+.modal-title{font-size:14px;color:var(--muted)}
+.progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.12)}
+.progress>i{display:block;height:100%;width:0;background:linear-gradient(135deg,var(--rose-1),var(--vio-1))}
+
+/* Floating hearts */
+.hearts{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.hearts span{position:absolute;color:rgba(255,255,255,.15);font-size:14px;animation:floatUp linear infinite;will-change:transform,opacity}
+@keyframes floatUp{0%{transform:translateY(20px) scale(.8);opacity:0}10%{opacity:.6}100%{transform:translateY(-120vh) scale(1.4);opacity:0}}
+
+/* Persistent watermark */
+.watermark{
+  position:fixed;inset:0;z-index:9999;pointer-events:none;user-select:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='140' viewBox='0 0 240 140'><text x='0' y='60' font-size='28' font-family='Poppins, Arial' fill='%23ffffff' fill-opacity='0.08' transform='rotate(-24 0 0)'>By Mr D</text></svg>");
+  background-size:240px 140px;background-repeat:repeat;mix-blend-mode:lighten
+}
+
+/* Footer */
+footer{padding:22px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.06))}
+</style>
+</head>
+<body>
+
+<div class="watermark" aria-hidden="true"></div>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <div class="brand-logo"></div>
+      <h1>Kiki 21 • By Mr D</h1>
+    </div>
+    <nav class="nav-links">
+      <a href="#hero">Accueil</a>
+      <a href="#uploader">Importer</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#diaporama" id="openDiapoTop">Diaporama</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <div>
+        <h2 class="kiki-title">Joyeux Anniversaire Fatou Kiné Iagne</h2>
+        <p class="kiki-sub">Pour Kiki (Mrs D) — un site rose, doux et inoubliable, signé Mr D.</p>
+
+        <div class="cta-row">
+          <button class="btn rose" id="importBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V3m0 13-4-4m4 4 4-4"/><path d="M20 21H4a2 2 0 0 1-2-2v-3h20v3a2 2 0 0 1-2 2Z"/></svg>
+            Importer photos/vidéos
+          </button>
+          <button class="btn" id="openDiapoBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>
+            Lancer le diaporama
+          </button>
+        </div>
+
+        <div class="card" style="margin-top:22px;">
+          <div class="small" id="targetLabel">Compte à rebours jusqu'à 00h (prochain minuit)</div>
+          <div class="countdown" id="countdown">
+            <div class="unit"><div class="num" id="d">00</div><div class="label">Jours</div></div>
+            <div class="unit"><div class="num" id="h">00</div><div class="label">Heures</div></div>
+            <div class="unit"><div class="num" id="m">00</div><div class="label">Minutes</div></div>
+            <div class="unit"><div class="num" id="s">00</div><div class="label">Secondes</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="big-21">21</div>
+        <div class="heart-wrap">
+          <div class="heart" aria-hidden="true"></div>
+          <div class="card" style="text-align:center;">
+            <div class="small">Mon coeur bat pour toi, Kiki ❤️</div>
+          </div>
+        </div>
+        <div class="hearts" id="floatingHearts"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="uploader">
+    <div class="container">
+      <h2>Importer vos souvenirs</h2>
+      <p class="lead">Ajoutez des photos et des vidéos de Kiki pour créer une galerie et un diaporama magique.</p>
+
+      <div class="upload">
+        <label class="dropzone" id="dropzone">
+          <input type="file" id="fileInput" accept="image/*,video/*" multiple>
+          <div class="dz-inner">
+            <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+              <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 16V3m0 13-4-4m4 4 4-4"/><path d="M20 21H4a2 2 0 0 1-2-2v-3h20v3a2 2 0 0 1-2 2Z"/></svg>
+              <div>
+                <div style="font-weight:600;color:#fff;">Déposez vos fichiers ici</div>
+                <div class="helper">ou cliquez pour sélectionner des images et des vidéos</div>
+              </div>
+            </div>
+          </div>
+        </label>
+
+        <div class="options">
+          <div class="opt-card">
+            <div class="small" style="margin-bottom:8px;">Minuit de l'événement</div>
+            <div class="opt-row">
+              <input type="date" id="dateInput">
+              <input type="time" id="timeInput" value="00:00">
+              <button class="btn" id="applyDateBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Appliquer
+              </button>
+            </div>
+            <div class="helper">Par défaut: prochain minuit. Ajustez pour le jour de l'anniversaire.</div>
+          </div>
+
+          <div class="opt-card">
+            <div class="opt-row">
+              <button class="btn" id="openGalleryBtn">Voir la galerie</button>
+              <button class="btn rose" id="startShowBtn">Démarrer le diaporama</button>
+              <div class="helper">Astuce: sur mobile, laissez les vidéos en silencieux pour l'autoplay.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="uploadNote" class="helper" style="margin-top:10px;">Aucun fichier pour le moment.</div>
+    </div>
+  </section>
+
+  <section class="section" id="galerie">
+    <div class="container">
+      <h2>Galerie de Kiki</h2>
+      <p class="lead">Touchez une vignette pour l'ouvrir en plein écran.</p>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+</main>
+
+<!-- Modal Diaporama -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <div class="modal-head">
+      <div class="modal-title" id="modalTitle">Diaporama</div>
+      <div style="display:flex;gap:6px;">
+        <button class="ctrl" id="toggleAutoplay">
+          <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M5 3v18l15-9z"/></svg>
+          Auto
+        </button>
+        <button class="ctrl" id="closeModal">Fermer</button>
+      </div>
+    </div>
+
+    <div class="modal-media" id="modalMedia"></div>
+
+    <div class="modal-controls">
+      <button class="circle-btn" id="prevBtn" title="Précédent">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button class="circle-btn" id="playPauseBtn" title="Lecture/Pause">
+          <svg id="playIcon" width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="pauseIcon" width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" style="display:none"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+        </button>
+        <select id="speedSelect" title="Vitesse">
+          <option value="4000">Vitesse: Normal</option>
+          <option value="2500">Vitesse: Rapide</option>
+          <option value="7000">Vitesse: Lente</option>
+        </select>
+        <label class="ctrl" style="gap:6px;">
+          <input type="checkbox" id="muteVideos" checked style="accent-color:#ff6aa6;"> Muet
+        </label>
+      </div>
+      <button class="circle-btn" id="nextBtn" title="Suivant">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="progress"><i id="progressBar"></i></div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">Avec tout mon amour pour Kiki — Filigrane permanent: By Mr D</div>
+</footer>
+
+<script>
+/* Floating hearts */
+(function(){
+  const container=document.getElementById('floatingHearts');const HEART='❤';const N=16;
+  for(let i=0;i<N;i++){const s=document.createElement('span');s.textContent=HEART;
+    const left=Math.random()*100,delay=Math.random()*10,dur=8+Math.random()*8,size=12+Math.random()*18;
+    s.style.left=left+'%';s.style.bottom='-20px';s.style.fontSize=size+'px';s.style.animationDuration=dur+'s';s.style.animationDelay=delay+'s';
+    container.appendChild(s);
+  }
+})();
+
+/* Countdown */
+let targetTime=(()=>{const now=new Date();return new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,0,0).getTime()})();
+const dEl=document.getElementById('d'),hEl=document.getElementById('h'),mEl=document.getElementById('m'),sEl=document.getElementById('s'),targetLabel=document.getElementById('targetLabel');
+const dateInput=document.getElementById('dateInput'),timeInput=document.getElementById('timeInput'),applyDateBtn=document.getElementById('applyDateBtn');
+(function(){const dt=new Date(targetTime);const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),d=String(dt.getDate()).padStart(2,'0');dateInput.value=`${y}-${m}-${d}`})();
+function setTargetLabel(ts){const dt=new Date(ts);targetLabel.textContent=`Compte à rebours jusqu'à ${dt.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})} le ${dt.toLocaleDateString('fr-FR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'})}`}
+setTargetLabel(targetTime);
+applyDateBtn.addEventListener('click',()=>{if(!dateInput.value)return;const [hh,mm]=(timeInput.value||'00:00').split(':').map(n=>parseInt(n,10));const dt=new Date(dateInput.value);dt.setHours(hh||0,mm||0,0,0);if(!isNaN(dt.getTime())){targetTime=dt.getTime();setTargetLabel(targetTime);countdownEnded=false}});
+let countdownTimer=setInterval(updateCountdown,250),countdownEnded=false;
+function updateCountdown(){const now=Date.now();let diff=Math.max(0,targetTime-now);const days=Math.floor(diff/86400000);diff-=days*86400000;const hours=Math.floor(diff/3600000);diff-=hours*3600000;const minutes=Math.floor(diff/60000);diff-=minutes*60000;const seconds=Math.floor(diff/1000);
+  dEl.textContent=String(days).padStart(2,'0');hEl.textContent=String(hours).padStart(2,'0');mEl.textContent=String(minutes).padStart(2,'0');sEl.textContent=String(seconds).padStart(2,'0');
+  if(!countdownEnded&&targetTime-now<=0){countdownEnded=true;celebrate()}
+}
+function celebrate(){targetLabel.textContent="C'est le moment ! Joyeux Anniversaire Kiki ❤️";document.body.animate([{filter:'saturate(100%) brightness(100%)'},{filter:'saturate(150%) brightness(110%)'},{filter:'saturate(100%) brightness(100%)'}],{duration:1800,iterations:2});tryStartShowAuto()}
+
+/* Upload & gallery */
+const fileInput=document.getElementById('fileInput'),dropzone=document.getElementById('dropzone'),importBtn=document.getElementById('importBtn'),galleryGrid=document.getElementById('galleryGrid'),uploadNote=document.getElementById('uploadNote');
+const openGalleryBtn=document.getElementById('openGalleryBtn'),startShowBtn=document.getElementById('startShowBtn'),openDiapoBtn=document.getElementById('openDiapoBtn'),openDiapoTop=document.getElementById('openDiapoTop');
+importBtn.addEventListener('click',()=>fileInput.click());
+openGalleryBtn.addEventListener('click',()=>location.hash='#galerie');
+[startShowBtn,openDiapoBtn].forEach(b=>b.addEventListener('click',()=>openModal()));
+openDiapoTop.addEventListener('click',e=>{e.preventDefault();openModal()});
+['dragenter','dragover'].forEach(ev=>dropzone.addEventListener(ev,e=>{e.preventDefault();e.stopPropagation();dropzone.classList.add('dragover')}));
+['dragleave','drop'].forEach(ev=>dropzone.addEventListener(ev,e=>{e.preventDefault();e.stopPropagation();dropzone.classList.remove('dragover')}));
+dropzone.addEventListener('drop',e=>{const files=Array.from(e.dataTransfer.files||[]);if(files.length)handleFiles(files)});
+dropzone.addEventListener('click',()=>fileInput.click());
+fileInput.addEventListener('change',()=>{const files=Array.from(fileInput.files||[]);if(files.length)handleFiles(files);fileInput.value=''});
+let mediaList=[],idCounter=1;
+function handleFiles(files){
+  const accepted=files.filter(f=>f.type.startsWith('image/')||f.type.startsWith('video/'));
+  if(!accepted.length)return;
+  Promise.all(accepted.map(file=>readAsDataURL(file).then(src=>({id:idCounter++,type:file.type.startsWith('image/')?'image':'video',src,name:file.name})))).then(items=>{mediaList=mediaList.concat(items);renderGallery()})
+}
+function readAsDataURL(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file)})}
+function renderGallery(){
+  galleryGrid.innerHTML='';
+  if(!mediaList.length){uploadNote.textContent='Aucun fichier pour le moment.';return}
+  uploadNote.textContent=mediaList.length+' fichier(s) importé(s).';
+  mediaList.forEach((item,idx)=>{
+    const card=document.createElement('div');card.className='media-card';card.dataset.idx=idx;
+    const top=document.createElement('div');top.className='mc-top';const badge=document.createElement('div');badge.className='badge';badge.textContent=item.type==='image'?'Photo':'Vidéo';top.appendChild(badge);card.appendChild(top);
+    const del=document.createElement('button');del.className='delete-btn';del.textContent='Supprimer';del.addEventListener('click',e=>{e.stopPropagation();mediaList.splice(idx,1);renderGallery()});card.appendChild(del);
+    if(item.type==='image'){const img=document.createElement('img');img.src=item.src;img.alt=item.name||'Photo';card.appendChild(img)}
+    else{const v=document.createElement('video');v.src=item.src;v.muted=true;v.playsInline=true;card.appendChild(v);const icon=document.createElement('div');icon.style.cssText='position:absolute;inset:0;display:grid;place-items:center;opacity:.75';icon.innerHTML='<svg width="54" height="54" viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>';card.appendChild(icon)}
+    card.addEventListener('click',()=>openModal(idx));
+    galleryGrid.appendChild(card);
+  })
+}
+
+/* Modal / Diaporama */
+const modal=document.getElementById('modal'),modalMedia=document.getElementById('modalMedia'),modalTitle=document.getElementById('modalTitle');
+const closeModalBtn=document.getElementById('closeModal'),nextBtn=document.getElementById('nextBtn'),prevBtn=document.getElementById('prevBtn');
+const playPauseBtn=document.getElementById('playPauseBtn'),playIcon=document.getElementById('playIcon'),pauseIcon=document.getElementById('pauseIcon');
+const toggleAutoplayBtn=document.getElementById('toggleAutoplay'),speedSelect=document.getElementById('speedSelect'),muteVideos=document.getElementById('muteVideos'),progressBar=document.getElementById('progressBar');
+let currentIndex=0,autoplay=true,interval=4000,timer=null,progressTimer=null;
+
+function openModal(startIndex){
+  if(!mediaList.length){alert("Veuillez importer des photos/vidéos d'abord.");return}
+  currentIndex=typeof startIndex==='number'?startIndex:0;
+  modal.classList.add('open');document.body.style.overflow='hidden';renderModalMedia();startAutoplay()
+}
+function closeModal(){modal.classList.remove('open');document.body.style.overflow='';stopAutoplay()}
+closeModalBtn.addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+
+function renderModalMedia(){
+  const item=mediaList[currentIndex];
+  modalTitle.textContent=`${item.type==='image'?'Photo':'Vidéo'} ${currentIndex+1} / ${mediaList.length} — ${item.name||''}`;
+  modalMedia.innerHTML='';
+  if(item.type==='image'){const img=document.createElement('img');img.src=item.src;modalMedia.appendChild(img);resetProgress(interval)}
+  else{const vid=document.createElement('video');vid.src=item.src;vid.controls=true;vid.autoplay=true;vid.muted=muteVideos.checked;vid.playsInline=true;modalMedia.appendChild(vid);vid.onended=()=>{if(autoplay)next()};
+    vid.onloadedmetadata=()=>{const dur=Math.max(vid.duration*1000,interval);resetProgress(dur)}}
+}
+function next(){currentIndex=(currentIndex+1)%mediaList.length;renderModalMedia()}
+function prev(){currentIndex=(currentIndex-1+mediaList.length)%mediaList.length;renderModalMedia()}
+nextBtn.addEventListener('click',()=>{stopAutoplay();next()});
+prevBtn.addEventListener('click',()=>{stopAutoplay();prev()});
+
+function startAutoplay(){autoplay=true;playIcon.style.display='none';pauseIcon.style.display='';scheduleNext()}
+function stopAutoplay(){autoplay=false;playIcon.style.display='';pauseIcon.style.display='none';clearTimeout(timer);timer=null;clearInterval(progressTimer);progressTimer=null;progressBar.style.width='0%'}
+function scheduleNext(){
+  clearTimeout(timer);
+  const item=mediaList[currentIndex];
+  if(item.type==='image'){resetProgress(interval);timer=setTimeout(()=>{if(autoplay){next();scheduleNext()}},interval)}
+  else{const v=modalMedia.querySelector('video');if(v&&isFinite(v.duration)&&v.duration>0){const dur=Math.max(v.duration*1000,2000);resetProgress(dur)}else{const fb=Math.max(interval,5000);resetProgress(fb);timer=setTimeout(()=>{if(autoplay){next();scheduleNext()}},fb)}}
+}
+function resetProgress(duration){clearInterval(progressTimer);progressBar.style.width='0%';const start=performance.now();progressTimer=setInterval(()=>{const t=performance.now()-start,p=Math.min(100,(t/duration)*100);progressBar.style.width=p+'%';if(p>=100)clearInterval(progressTimer)},30)}
+playPauseBtn.addEventListener('click',()=>{if(autoplay)stopAutoplay();else{startAutoplay();scheduleNext()}});
+toggleAutoplayBtn.addEventListener('click',()=>{if(autoplay)stopAutoplay();else{startAutoplay();scheduleNext()}});
+speedSelect.addEventListener('change',e=>{interval=parseInt(e.target.value,10)||4000;if(autoplay){scheduleNext()}});
+muteVideos.addEventListener('change',()=>{const v=modalMedia.querySelector('video');if(v)v.muted=muteVideos.checked});
+function tryStartShowAuto(){if(!mediaList.length)return;openModal(0)}
+
+/* Keyboard controls */
+document.addEventListener('keydown',e=>{if(!modal.classList.contains('open'))return;
+  if(e.key==='ArrowRight'){next();stopAutoplay()} if(e.key==='ArrowLeft'){prev();stopAutoplay()}
+  if(e.key===' '){e.preventDefault();playPauseBtn.click()} if(e.key==='Escape')closeModal()
+});
+
+/* Anchor smooth scroll (iOS fix) */
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'})}}));
+</script>
+</body>
+</html>
